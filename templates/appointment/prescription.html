@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+	<h2>Write Prescription</h2>
+	<div class="col-md-10">
+
+		<form method="post" action="">
+			{% csrf_token %}
+			<div class="form-group">
+				<label for="prescription">Prescription:</label>
+				<textarea class="form-control" rows="5" id="prescription" name="prescription" required>{{ symptoms.prescription }}</textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Patient History{% endblock %}
+
+{% block content %}
+
+<body style="background-image: url('https://img.freepik.com/free-vector/clean-medical-background_53876-116875.jpg?w=2000');">
+    <section class="dentist-area section-padding-50-0">
+
+        <div class="container" style="align-items: center; justify-content: center;display: flex;">
+            <div class="col-12 col-sm-6 col-md-4">
+                {% if request.user.is_authenticated and request.user.role == 'doctor' %}
+                <h3 style="align-items: center;justify-content: center;display: flex"> Patient's Previous Records</h3>
+                {% elif request.user.is_authenticated and request.user.role == 'patient' %}
+                <h3 style="align-items: center;justify-content: center;display: flex"> {{ request.user.username }}'s Previous Records</h3>
+                {% endif %}
+                </br >
+                </br >
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="dentist-area section-padding-30-0">
+
+        <div class="container">
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">symptoms</th>
+                    <th scope="col">Prescription</th>
+                    <th scope="col">Prescribed By</th>
+                    <th scope="col">Actions</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                    {% for symptom in symptoms %}
+
+                    <tr>
+
+                        <td>{{ symptom.symptoms }}</td>
+                        <td> {{ symptom.prescription }}</td>
+                        <td> Dr.{{ symptom.prescribed_by }} </td>
+                        <td>
+
+                            <a  class='btn' style=' color:blue;' href="{% url 'appointment:update-symptoms'%}">
+                                <span class="glyphicon glyphicon-trash">Add prescription</span>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                       
+                </tbody>
+
+            </table>
+        </div>
+    </section>
+</body>
+
+{% endblock %}

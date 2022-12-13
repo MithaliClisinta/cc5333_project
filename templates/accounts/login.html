@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+{% load static %}
+
+{% block title %} Login {% endblock %}
+
+{% block content %}
+
+
+<body style="background-image: url('https://img.freepik.com/free-photo/health-still-life-with-copy-space_23-2148854031.jpg?w=2000');">
+<div class="container" >
+
+<div class="row justify-content-center">
+
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <center> <h3>Login</h3></center>
+
+                    <form action="" method="POST">{% csrf_token %}
+
+                        {{ form|bootstrap }}
+
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <input type="submit" value="Login" class="btn btn-dark btn-md text-white">
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+</body>
+
+{% endblock %}
+
+
